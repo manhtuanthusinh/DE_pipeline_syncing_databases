@@ -2,38 +2,6 @@ import mysql.connector
 from mysql.connector import errorcode
 from mysql.connector import Error
 
-config = {
-    'user': 'root',
-    'port': 3306,
-    'password': '123',
-    'host': 'localhost',
-    'database': 'github_data'
-}
-#
-# try:
-#     cnx = mysql.connector.connect(**config)
-#
-#     if cnx.is_connected():
-#         print(f"Successfully connect to MYSQL database: {config['database']} ")
-#
-#         cursor = cnx.cursor()
-#         cursor.execute("SELECT VERSION()")
-#         db_version = cursor.fetchone()
-#         print(f"Database version: {db_version}")
-#         cursor.close()
-#
-# except mysql.connector.Error as e:
-#     if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-#         print("Access denied: check username or password")
-#     elif e.errno == errorcode.ER_BAD_DB_ERROR:
-#         print("Database does not exist.")
-#     else:
-#         print(f"Error: {e}")
-# finally:
-#     if 'cnx' in locals() and cnx.is_connected():
-#         cnx.close()
-#         print("MYSQL connection closed.")
-
 class MYSQL_connect:
     # init function: a constructor -> when call this class the init runs first
     def __init__(self, host, port, user, password):
