@@ -2,13 +2,21 @@ import os
 from dotenv import load_dotenv
 from dataclasses import dataclass
 
+from databases.mongodb_connect import mongodb_connect
+
+
 @dataclass
 class MYSQL_config():
-    host:str
-    user:str
+    host: str
+    user: str
     password: str
     databases: str
     port: int
+
+@dataclass
+class Mongodb_config():
+    uri: str
+    databases: str
 
 def get_db_config():
     load_dotenv()
@@ -21,7 +29,10 @@ def get_db_config():
             databases=os.getenv("MYSQL_DATABASE"),
             port=os.getenv("MYSQL_PORT")
         ),
-        "mongo": "",
+        "mongodb": Mongodb_config(
+            uri=os.getenv("MONGO_URI"),
+            databases=os.getenv("MONGO_DATABASE")
+        ),
         "redis": "",
         "postgresql": "",
         "elasticsearch": ""
