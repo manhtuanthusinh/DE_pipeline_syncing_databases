@@ -1,5 +1,4 @@
 import mysql.connector
-from mysql.connector import errorcode
 from mysql.connector import Error
 
 class MYSQL_connect:
@@ -25,7 +24,7 @@ class MYSQL_connect:
             print("---------------- Connected to MYSQL ----------------")
 
         except Error as e:
-            raise Exception (f"Fail to connect to MYSQL: error {e}") from e
+            raise Exception (f"-------------- Fail to connect to MYSQL: error {e} --------------") from e
 
         return self.connection, self.cursor
 
